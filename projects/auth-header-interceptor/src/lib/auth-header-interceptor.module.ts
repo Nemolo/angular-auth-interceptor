@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { AuthHeaderInterceptorComponent } from './auth-header-interceptor.component';
+import { AuthHeaderInterceptorService } from './auth-header-interceptor.interceptor';
 
 @NgModule({
-  declarations: [AuthHeaderInterceptorComponent],
-  imports: [
-  ],
-  exports: [AuthHeaderInterceptorComponent]
+  declarations: [],
+  imports: [],
+  exports: [ AuthHeaderInterceptorService ]
 })
 export class AuthHeaderInterceptorModule { }

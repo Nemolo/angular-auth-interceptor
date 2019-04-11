@@ -8,15 +8,19 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class JwtInterceptor implements HttpInterceptor {
+export class AuthHeaderInterceptorService implements HttpInterceptor {
 
   authRequest: Observable<any>;
 
   constructor(
-    private whiteList: string[],
+    private whiteList: Set<string>,
     private failCallback: CallableFunction,
     private tokenValidatorFunction: CallableFunction,
+    private refreshValidatorFunction: CallableFunction,
+    private logoutFunction: CallableFunction,
     private removeTokenFunction: CallableFunction,
+    private refreshTokenFunction: CallableFunction,
+    private getTokenFunction: CallableFunction,
     private router: Router
     ) { }
 
@@ -36,11 +40,10 @@ export class JwtInterceptor implements HttpInterceptor {
               }
             })
           );
-      } else if (this.authHelper.getRefreshToken()) {
+      } else if (this.refreshValidatorFunction()) {
         return this.refreshCall(request, next);
       } else {
-        this.authService.logout();
-        this.router.navigateByUrl('/account/login');
+        this.logoutFunction();
         return throwError('Unauthorized');
       }
     }
@@ -49,10 +52,10 @@ export class JwtInterceptor implements HttpInterceptor {
 
   protected refreshCall(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     if (!this.authRequest) {
-      this.authRequest = this.authService.refreshToken().pipe(
+      this.authRequest = this.refreshTokenFunction().pipe(
         catchError((err, caught) => {
           if (err.status === 401) {
-            this.authService.logout();
+            this.logoutFunction();
             this.router.navigateByUrl('/login');
             return next.handle(request);
           } else {
@@ -71,21 +74,22 @@ export class JwtInterceptor implements HttpInterceptor {
 
   needsAuth(url) {
     // no auth
-    if (url.startsWith(environment.endpoint)) {
-      for (const oneUrl of this.whiteList) {
-        if ((environment.endpoint + oneUrl) === url) {
-          return false;
-        }
-      }
-      return true;
-    }
-    return false;
+    return !this.whiteList.has(url);
+    // if (url.startsWith(environment.endpoint)) {
+    //   for (const oneUrl of this.whiteList) {
+    //     if ((environment.endpoint + oneUrl) === url) {
+    //       return false;
+    //     }
+    //   }
+    //   return true;
+    // }
+    // return false;
   }
 
   protected getClonedRequest(request: HttpRequest<any>) {
     return request.clone({
       setHeaders: {
-        Authorization: `Bearer ${this.authHelper.getToken()}`
+        Authorization: `Bearer ${this.getTokenFunction()}`
       }
     });
   }
