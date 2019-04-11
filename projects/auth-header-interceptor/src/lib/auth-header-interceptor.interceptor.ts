@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { switchMap, catchError, share } from 'rxjs/operators';
-import { Router } from '@angular/router';
-
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +19,6 @@ export class AuthHeaderInterceptorService implements HttpInterceptor {
     private removeTokenFunction: CallableFunction,
     private refreshTokenFunction: CallableFunction,
     private getTokenFunction: CallableFunction,
-    private router: Router
     ) { }
 
 
@@ -56,7 +53,6 @@ export class AuthHeaderInterceptorService implements HttpInterceptor {
         catchError((err, caught) => {
           if (err.status === 401) {
             this.logoutFunction();
-            this.router.navigateByUrl('/login');
             return next.handle(request);
           } else {
             return throwError(err);
