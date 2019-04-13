@@ -1,7 +1,7 @@
 import { InjectionToken } from '@angular/core';
 
 /** InjectionToken for auth header iterceptor config */
-export const AUTH_HEADER_INTERCEPTOR_CONFIG = new InjectionToken<AuthHeaderInterceptorConfig>('AUTH_HEADER_INTERCEPTOR_CONFIG');
+export const AuthHeaderInterceptorConfigService = new InjectionToken<AuthHeaderInterceptorConfig>('AUTH_HEADER_INTERCEPTOR_CONFIG');
 
 export interface AuthHeaderInterceptorConfig {
   whiteList: Set<string>;
