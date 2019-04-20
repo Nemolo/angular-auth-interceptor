@@ -3,5 +3,6 @@
  */
 
 export * from './lib/auth-header-interceptor.service';
-export * from './lib/auth-header-interceptor.component';
+export * from './lib/auth-header-interceptor-service.interface';
+export * from './lib/auth-header-interceptor.interceptor';
 export * from './lib/auth-header-interceptor.module';
