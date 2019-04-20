@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
-import {
-  AuthHeaderInterceptorConfigService } from './auth-header-interceptor.config';
 import { ModuleWithProviders } from '@angular/compiler/src/core';
-import { AuthHeaderInterceptorService } from './auth-header-interceptor.service';
-import { AuthHeaderInterceptorServiceInterface } from './auth-header-interceptor-service.interface';
+import { AuthHeaderInterceptorServiceInterface, AuthHeaderInterceptorServiceInjector } from './auth-header-interceptor-service.interface';
 
 @NgModule({
   declarations: [],
@@ -16,9 +13,8 @@ export class AuthHeaderInterceptorModule {
     return {
       ngModule: AuthHeaderInterceptorModule,
       providers: [
-        AuthHeaderInterceptorService,
         {
-          provide: AuthHeaderInterceptorServiceInterface,
+          provide: AuthHeaderInterceptorServiceInjector,
           useValue: authService
         }
       ]

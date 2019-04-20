@@ -7,7 +7,7 @@ import { Route } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export abstract class AuthHeaderInterceptorService implements AuthHeaderInterceptorServiceInterface {
+export abstract class AuthHeaderInterceptorServicePrototype implements AuthHeaderInterceptorServiceInterface {
 
   whiteListPrefix: string[];
 
