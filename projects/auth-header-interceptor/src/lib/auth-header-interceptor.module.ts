@@ -1,11 +1,27 @@
 import { NgModule } from '@angular/core';
-import { AuthHeaderInterceptor } from './auth-header-interceptor.interceptor';
+import {
+  AuthHeaderInterceptorConfigService } from './auth-header-interceptor.config';
+import { ModuleWithProviders } from '@angular/compiler/src/core';
+import { AuthHeaderInterceptorService } from './auth-header-interceptor.service';
+import { AuthHeaderInterceptorServiceInterface } from './auth-header-interceptor-service.interface';
 
 @NgModule({
   declarations: [],
   imports: [],
-  exports: [
-    AuthHeaderInterceptor,
-  ]
+  providers: [],
+  exports: []
 })
-export class AuthHeaderInterceptorModule { }
+export class AuthHeaderInterceptorModule {
+  static forRoot(authService: AuthHeaderInterceptorServiceInterface): ModuleWithProviders {
+    return {
+      ngModule: AuthHeaderInterceptorModule,
+      providers: [
+        AuthHeaderInterceptorService,
+        {
+          provide: AuthHeaderInterceptorServiceInterface,
+          useValue: authService
+        }
+      ]
+    };
+  }
+}
