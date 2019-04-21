@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpRequest } from '@angular/common/http';
 import { AuthHeaderInterceptorServiceInterface } from './auth-header-interceptor-service.interface';
 import { Observable } from 'rxjs';
-import { Route } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export abstract class AuthHeaderInterceptorServicePrototype implements AuthHeade
 
   whiteListPrefix: string[];
 
-  constructor( ) { }
+  constructor() { }
 
   needAuth(request: HttpRequest<any>) {
     for (const prefix of this.whiteListPrefix) {
