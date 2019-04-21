@@ -1,6 +1,6 @@
 {
   "name": "auth-header-interceptor",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Fabrizio Marconi",
   "homepage": "https://github.com/Nemolo/angular-auth-interceptor",
   "bugs": {

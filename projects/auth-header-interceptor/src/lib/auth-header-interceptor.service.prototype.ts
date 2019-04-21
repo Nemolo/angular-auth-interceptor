@@ -14,7 +14,7 @@ export abstract class AuthHeaderInterceptorServicePrototype implements AuthHeade
   constructor( ) { }
 
   needAuth(request: HttpRequest<any>) {
-    for (const prefix in this.whiteListPrefix) {
+    for (const prefix of this.whiteListPrefix) {
       if (request.url.startsWith(prefix)) {
         return false;
       }
