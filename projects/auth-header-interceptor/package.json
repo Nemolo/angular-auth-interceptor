@@ -2,6 +2,11 @@
   "name": "auth-header-interceptor",
   "version": "0.0.4",
   "author": "Fabrizio Marconi",
+  "homepage": "https://github.com/Nemolo/angular-auth-interceptor",
+  "bugs": {
+    "url": "https://github.com/Nemolo/angular-auth-interceptor/issues"
+  },
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/Nemolo/angular-auth-interceptor.git"
