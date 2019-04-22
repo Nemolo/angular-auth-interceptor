@@ -20,7 +20,23 @@ Install via `npm i --save ng-auth-header-interceptor`
 
 then add interceptor to providers, es:
 
+    import {
+      NgAuthHeaderInterceptor,
+      AuthHeaderInterceptorServiceInjector
+    } from 'ng-auth-header-interceptor';
 
+    providers: [
+      {
+        provide: AuthHeaderInterceptorServiceInjector,
+        useClass: AuthUtilService // your implementation class
+      },
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: NgAuthHeaderInterceptor,
+        multi: true
+      },
+      ...
+    ]
 
 ## Credits
 
