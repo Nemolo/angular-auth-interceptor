@@ -1,8 +1,8 @@
 /*
- * Public API Surface of auth-header-interceptor
+ * Public API Surface of ng-auth-header-interceptor
  */
 
-export * from './lib/auth-header-interceptor.service.prototype';
-export * from './lib/auth-header-interceptor-service.interface';
-export * from './lib/auth-header-interceptor.interceptor';
-export * from './lib/auth-header-interceptor.module';
+export * from './lib/ng-auth-header-interceptor';
+export * from './lib/ng-auth-header-interceptor.module';
+export * from './lib/ng-auth-header-interceptor-helper.service';
+export * from './lib/ng-auth-header-interceptor-helper.prototype';

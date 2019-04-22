@@ -2,20 +2,18 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { switchMap, catchError, share } from 'rxjs/operators';
-import {
-  AuthHeaderInterceptorServiceInterface,
-  AuthHeaderInterceptorServiceInjector
-} from './auth-header-interceptor-service.interface';
+import { NgAuthHeaderInterceptorHelperServiceInterface } from './ng-auth-header-interceptor-helper.service';
+import { AuthHeaderInterceptorServiceInjector } from './ng-auth-header-interceptor-helper.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthHeaderInterceptor implements HttpInterceptor {
+export class NgAuthHeaderInterceptor implements HttpInterceptor {
 
   authRequest: Observable<any>;
 
   constructor(
-    @Inject(AuthHeaderInterceptorServiceInjector) protected authService: AuthHeaderInterceptorServiceInterface
+    @Inject(AuthHeaderInterceptorServiceInjector) protected authService: NgAuthHeaderInterceptorHelperServiceInterface
   ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

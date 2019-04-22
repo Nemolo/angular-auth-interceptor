@@ -3,9 +3,9 @@ import { Observable } from 'rxjs';
 import { InjectionToken } from '@angular/core';
 
 export const AuthHeaderInterceptorServiceInjector =
-  new InjectionToken<AuthHeaderInterceptorServiceInterface>('AUTH_HEADER_INTERCEPTOR_SERVICE');
+  new InjectionToken<NgAuthHeaderInterceptorHelperServiceInterface>('AUTH_HEADER_INTERCEPTOR_HELPER_SERVICE');
 
-export interface AuthHeaderInterceptorServiceInterface {
+export interface NgAuthHeaderInterceptorHelperServiceInterface {
   needAuth(request: HttpRequest<any>): boolean;
   isTokenValid(): boolean;
   getClonedRequest(request: HttpRequest<any>): HttpRequest<any>;
@@ -14,9 +14,4 @@ export interface AuthHeaderInterceptorServiceInterface {
   logout(): void;
   refreshToken(): Observable<void>;
   getToken(): string;
-}
-
-/** @docs-private */
-export function AUTH_HEADER_INTERCEPTOR_SERVICE_FACTORY(): AuthHeaderInterceptorServiceInterface {
-  throw new Error('Need config');
 }

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest } from '@angular/common/http';
-import { AuthHeaderInterceptorServiceInterface } from './auth-header-interceptor-service.interface';
 import { Observable } from 'rxjs';
+import { NgAuthHeaderInterceptorHelperServiceInterface } from './ng-auth-header-interceptor-helper.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export abstract class AuthHeaderInterceptorServicePrototype implements AuthHeaderInterceptorServiceInterface {
+export abstract class NgAuthHeaderInterceptorHelperServicePrototype implements NgAuthHeaderInterceptorHelperServiceInterface {
 
   whiteListPrefix: string[];
 

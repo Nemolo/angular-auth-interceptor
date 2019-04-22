@@ -1,18 +1,22 @@
 {
-  "name": "auth-header-interceptor",
-  "version": "0.0.6",
-  "author": "Fabrizio Marconi",
-  "homepage": "https://github.com/Nemolo/angular-auth-interceptor",
-  "bugs": {
-    "url": "https://github.com/Nemolo/angular-auth-interceptor/issues"
-  },
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Nemolo/angular-auth-interceptor.git"
-  },
+  "name": "ng-auth-header-interceptor",
+  "version": "0.0.7",
   "peerDependencies": {
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0"
-  }
+  },
+  "author": {
+    "name": "Fabrizio Marconi"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nemolo/ng-auth-header-interceptor/issues"
+  },
+  "repository": "https://github.com/Nemolo/ng-auth-header-interceptor",
+  "homepage": "https://github.com/Nemolo/ng-auth-header-interceptor",
+  "keywords": [
+    "angular",
+    "interceptor"
+  ],
+  "dependencies": {}
 }
